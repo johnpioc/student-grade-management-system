@@ -3,13 +3,13 @@
 This project is dedicated towards helping me solidify my C++ fundamentals by working with classes, file handling, 
 dynamic memory, and STL containers. It will reinforce concepts like input validation, sorting and searching.
 
-### Project Overview
+## Project Overview
 
 This is a command-line application that allows users to store student records, update grades, and generate reports. 
 The program will use classes to represent students, file handling to save/load data, and STL containers to manage 
 student records efficiently.
 
-### System Design & Technical Specifications
+## System Design & Technical Specifications
 
 **Components**
 - **Student Class**
