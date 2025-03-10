@@ -13,6 +13,7 @@ private:
     std::vector<int> grades;
 
 public:
+    Student(std::string name, int id);
     std::string getName();
     int getId();
     int getGPA();
@@ -22,7 +23,6 @@ public:
     void addNewGrade(int grade);
     int removeGradeByIndex(int index);
 
-Student::Student(std::string name, int id);
 };
 
 #endif //STUDENT_H
