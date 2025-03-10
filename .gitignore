@@ -1,0 +1,42 @@
+# Ignore build artifacts
+/build/
+/cmake-build-debug/
+/cmake-build-release/
+CMakeCache.txt
+CMakeFiles/
+CMakeLists.txt.user
+Makefile
+CTestTestfile.cmake
+cmake_install.cmake
+
+# Ignore binary files
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.so
+*.dll
+
+# Ignore CLion-specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.DS_Store
+
+# Ignore generated test results
+/tests/test_results/
+
+# Ignore compiled database files (if using CLion indexing)
+compile_commands.json
+
+# Ignore data files (optional)
+data/students.txt
