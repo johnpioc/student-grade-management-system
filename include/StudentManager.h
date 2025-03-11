@@ -14,6 +14,8 @@ public:
     void addStudent(Student newStudent);
     std::vector<Student> getAllStudents();
     Student removeStudentByIndex(int index);
+    void saveToFile();
+    void readFromFile();
 };
 
 
