@@ -1,5 +1,6 @@
 #include <iostream>
 #include "StudentManager.h"
+#include <iomanip>
 
 int getUserInput() {
     std::cout << "Choose from one of the following options (1-4):\n";
@@ -8,9 +9,10 @@ int getUserInput() {
     std::cout << "3. Generate Report - overall gpa, gpa per student, all student grades";
     std::cout << "4. quit the application\n\n";
 
-    int input;
+    std::string inputString;
     std::cout << "Enter option: ";
-    std::cin >> input;
+    std::getline(std::cin, inputString);
+    int input = std::stoi(inputString);
 
     switch (input) {
         case 1:
@@ -24,6 +26,31 @@ int getUserInput() {
     }
 }
 
+void manageStudents(StudentManager studentManager) {
+    std::cout << "***** MANAGE STUDENTS *****\n\n";
+
+    while (true) {
+        studentManager.displayStudents();
+
+        std::cout << "Commands: add student [A], add grade to student [G <ID> <GRADE>], edit [E <ID>], delete [D <ID>]\n";
+        std::cout << "Type your command: ";
+        std::string input;
+        std::getline(std::cin, input);
+
+        if (input == "A") {
+            studentManager.addStudentWorkflow();
+        } else {
+            std::cout << "\nInvalid input, try again.\n";
+        }
+    }
+}
+
+void processInput(int input, StudentManager studentManager) {
+    switch (input) {
+        case 1:
+            manageStudents(studentManager);
+    }
+}
 
 StudentManager initialiseStudentManager() {
     StudentManager studentManager = StudentManager();
@@ -36,7 +63,9 @@ int main() {
     StudentManager studentManager = initialiseStudentManager();
     while (true) {
         int input = getUserInput();
+        processInput(input, studentManager);
     }
+
 
     return 0;
 }

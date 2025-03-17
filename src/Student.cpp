@@ -13,14 +13,14 @@ int Student::getId() {
     return id;
 }
 
-int Student::getGPA() {
-    int runningSum = 0;
+double Student::getGPA() {
+    double runningSum = 0;
 
     for (int i = 0; i < grades.size(); i++) {
         runningSum += grades[i];
     }
 
-    return runningSum / grades.size();
+    return runningSum / static_cast<double>(grades.size());
 }
 
 std::vector<int> Student::getAllGrades() {

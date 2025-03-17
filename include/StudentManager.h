@@ -14,6 +14,9 @@ public:
     void addStudent(Student newStudent);
     std::vector<Student> getAllStudents();
     Student removeStudentByIndex(int index);
+    int getNumOfStudents();
+    void displayStudents();
+    void addStudentWorkflow();
     void saveToFile();
     void readFromFile();
 };

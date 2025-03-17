@@ -16,7 +16,7 @@ public:
     Student(std::string name, int id);
     std::string getName();
     int getId();
-    int getGPA();
+    double getGPA();
     std::vector<int> getAllGrades();
 
     void updateName(std::string newName);
