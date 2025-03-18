@@ -20,6 +20,7 @@ public:
     void addStudentWorkflow();
     void saveToFile();
     void readFromFile();
+    void createReport();
 };
 
 

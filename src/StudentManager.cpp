@@ -145,5 +145,31 @@ void StudentManager::readFromFile() {
     }
 }
 
+void StudentManager::createReport() {
+    std::ofstream file("../report/report.txt");
+
+    int runningGradeCount = 0;
+    int runningSubjectCount = 0;
+    for (Student student : students) {
+        std::vector<int> grades = student.getAllGrades();
+        for (int grade : grades) runningGradeCount += grade;
+        runningSubjectCount += grades.size();
+    }
+
+    int overallGPA = (double) runningGradeCount / (double) runningSubjectCount;
+
+    file << "The cohort's overall GPA over " << students.size() << " students is " << overallGPA << " / 7.0\n\n";
+
+    for (Student student : students) {
+        file << "ID: " << student.getId() << "\n";
+        file << "Name: " << student.getName() << "\n";
+        file << "GPA: " << student.getGPA() << "\n\n";
+    }
+
+    file.close();
+
+    std::cout << "Report successfully generated.\n";
+}
+
 
 

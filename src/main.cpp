@@ -6,7 +6,7 @@ int getUserInput() {
     std::cout << "Choose from one of the following options (1-4):\n";
     std::cout << "1. Manage Students - add, update or remove\n";
     std::cout << "2. Display Students - view by name or GPA\n";
-    std::cout << "3. Generate Report - overall gpa, gpa per student, all student grades\n";
+    std::cout << "3. Generate Report - overall gpa & gpa per student\n";
     std::cout << "4. quit the application\n\n";
 
     std::string inputString;
@@ -125,6 +125,9 @@ void processInput(int input, StudentManager studentManager) {
             break;
         case 2:
             viewStudents(studentManager);
+            break;
+        case 3:
+            studentManager.createReport();
     }
 }
 

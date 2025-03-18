@@ -1,0 +1,18 @@
+The cohort's overall GPA over 4 students is 5 / 7.0
+
+ID: 1
+Name: John Pioc
+GPA: 6
+
+ID: 2
+Name: Bob Smith
+GPA: 5.55556
+
+ID: 3
+Name: Zane Malik
+GPA: 5.2
+
+ID: 4
+Name: Cian Casey
+GPA: 5.44444
+
