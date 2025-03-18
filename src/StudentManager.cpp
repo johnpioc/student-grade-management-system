@@ -23,6 +23,16 @@ int StudentManager::getNumOfStudents() {
     return students.size();
 }
 
+Student* StudentManager::getStudentById(int id) {
+    for (Student& student : students) {
+        if (student.getId() == id) {
+            return &student;
+        }
+    }
+
+    return nullptr;
+}
+
 void StudentManager::displayStudents() {
     if (getNumOfStudents() == 0) {
         std::cout << "No students on file.\n\n";

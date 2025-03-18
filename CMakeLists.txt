@@ -15,4 +15,6 @@ add_executable(StudentGradeManager
         include/Student.h
         src/StudentManager.cpp
         include/StudentManager.h
+        include/Utilities.h
+        src/Utilities.cpp
 )

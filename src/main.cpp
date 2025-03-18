@@ -1,12 +1,12 @@
 #include <iostream>
 #include "StudentManager.h"
-#include <iomanip>
+#include "Utilities.h"
 
 int getUserInput() {
     std::cout << "Choose from one of the following options (1-4):\n";
     std::cout << "1. Manage Students - add, update or remove\n";
     std::cout << "2. Display Students - view by name or GPA\n";
-    std::cout << "3. Generate Report - overall gpa, gpa per student, all student grades";
+    std::cout << "3. Generate Report - overall gpa, gpa per student, all student grades\n";
     std::cout << "4. quit the application\n\n";
 
     std::string inputString;
@@ -32,13 +32,27 @@ void manageStudents(StudentManager studentManager) {
     while (true) {
         studentManager.displayStudents();
 
-        std::cout << "Commands: add student [A], add grade to student [G <ID> <GRADE>], edit [E <ID>], delete [D <ID>]\n";
+        std::cout << "Commands: add student [A], add grade to student [G <ID> <GRADE>], edit [E <ID>], delete [D <ID>], quit [Q]\n";
         std::cout << "Type your command: ";
-        std::string input;
-        std::getline(std::cin, input);
+        std::string inputString;
+        std::getline(std::cin, inputString);
 
-        if (input == "A") {
+        std::vector<std::string> components = splitString(inputString, ' ');
+
+        if (components[0] == "A") {
             studentManager.addStudentWorkflow();
+        } else if (components[0] == "G") {
+            int idToSearch = std::stoi(components[1]);
+            Student* student = studentManager.getStudentById(idToSearch);
+            if (student) {
+                int newGrade = std::stoi(components[2]);
+                student->addNewGrade(newGrade);
+                std::cout << "Grade added successfully to student #" << idToSearch << "\n";
+            } else {
+                std::cout << "There is no student with the ID of " << idToSearch << ", try again.\n";
+            }
+        } else if (components[0] == "Q") {
+            break;
         } else {
             std::cout << "\nInvalid input, try again.\n";
         }
@@ -61,10 +75,14 @@ StudentManager initialiseStudentManager() {
 int main() {
     std::cout << "***** STUDENT GRADE MANAGEMENT SYSTEM *****\n\n";
     StudentManager studentManager = initialiseStudentManager();
+
     while (true) {
         int input = getUserInput();
+        if (input == 4) break;
         processInput(input, studentManager);
     }
+
+    std::cout << "Thank you for using the student grade management system.\n";
 
 
     return 0;
