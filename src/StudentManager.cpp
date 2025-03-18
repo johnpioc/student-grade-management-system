@@ -6,6 +6,7 @@
 
 void StudentManager::addStudent(Student newStudent) {
     students.push_back(newStudent);
+    saveToFile();
 }
 
 std::vector<Student> StudentManager::getAllStudents() {
@@ -73,6 +74,22 @@ void StudentManager::addStudentWorkflow() {
     addStudent(newStudent);
 }
 
+void StudentManager::saveToFile() {
+    std::ofstream outputFile("../data/students.txt");
+
+    for (Student student : students) {
+        std::string lineString = std::to_string(student.getId()) + " " + student.getName() + " ";
+        for (int grade : student.getAllGrades()) {
+            lineString += std::to_string(grade) + " ";
+        }
+        lineString += "\n";
+
+        outputFile << lineString;
+    }
+
+    outputFile.close();
+}
+
 
 void StudentManager::readFromFile() {
     std::ifstream inputFile("../data/students.txt");
@@ -101,6 +118,7 @@ void StudentManager::readFromFile() {
             addStudent(newStudent);
         }
 
+        inputFile.close();
         std::cout << "Data has been found from " << students.size() << " students and has been uploaded to the student manager.\n\n";
     } else {
         std::cout << "No student records were found.\n\n";
