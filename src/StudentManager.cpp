@@ -43,8 +43,8 @@ Student* StudentManager::getStudentById(int id) {
     return nullptr;
 }
 
-void StudentManager::displayStudents() {
-    if (getNumOfStudents() == 0) {
+void StudentManager::displayStudents(std::vector<Student> studentsVector) {
+    if (studentsVector.empty()) {
         std::cout << "No students on file.\n\n";
     } else { // Create table of students
         // Header
@@ -56,7 +56,7 @@ void StudentManager::displayStudents() {
 
         std::cout << std::string(40, '-') << "\n";
 
-        for (Student student : getAllStudents()) {
+        for (Student student : studentsVector) {
             std::cout << std::left
                 << std::setw(10) << student.getId()
                 << std::setw(20) << student.getName()

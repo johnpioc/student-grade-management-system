@@ -30,7 +30,7 @@ void manageStudents(StudentManager studentManager) {
     std::cout << "***** MANAGE STUDENTS *****\n\n";
 
     while (true) {
-        studentManager.displayStudents();
+        studentManager.displayStudents(studentManager.getAllStudents());
 
         std::cout << "Commands: add student [A], add grade to student [G <ID> <GRADE>], delete [D <ID>], quit [Q]\n";
         std::cout << "Type your command: ";
@@ -64,10 +64,67 @@ void manageStudents(StudentManager studentManager) {
     }
 }
 
+void viewStudents(StudentManager studentManager) {
+    while (true) {
+        std::cout << "***** STUDENT VIEWER *****\n\n";
+
+        std::cout << "Choose from one of the viewing options (1-4):\n";
+        std::cout << "1. Order by name (A-Z)\n";
+        std::cout << "2. Order by name (Z-A)\n";
+        std::cout << "3. Order by GPA (Decreasing)\n";
+        std::cout << "4. Order by GPA (Increasing)\n";
+        std::cout << "5. return back to main menu\n\n";
+
+        std::cout << "Enter option: ";
+        std::string inputString;
+        std::getline(std::cin, inputString);
+        int input = std::stoi(inputString);
+
+        std::vector<Student> students = studentManager.getAllStudents();
+        bool breakWhileLoop = false;
+
+        switch (input) {
+            case 1:
+                std::sort(students.begin(), students.end(), [](Student a, Student b) {
+                   return a.getName() < b.getName();
+                });
+                studentManager.displayStudents(students);
+                break;
+            case 2:
+                std::sort(students.begin(), students.end(), [](Student a, Student b) {
+                   return a.getName() > b.getName();
+                });
+                studentManager.displayStudents(students);
+                break;
+            case 3:
+                std::sort(students.begin(), students.end(), [](Student a, Student b) {
+                   return a.getGPA() > b.getGPA();
+                });
+                studentManager.displayStudents(students);
+                break;
+            case 4:
+                std::sort(students.begin(), students.end(), [](Student a, Student b) {
+                   return a.getGPA() < b.getGPA();
+                });
+                studentManager.displayStudents(students);
+                break;
+            case 5:
+                breakWhileLoop = true;
+                break;
+        }
+
+        if (breakWhileLoop) break;
+    }
+
+}
+
 void processInput(int input, StudentManager studentManager) {
     switch (input) {
         case 1:
             manageStudents(studentManager);
+            break;
+        case 2:
+            viewStudents(studentManager);
     }
 }
 

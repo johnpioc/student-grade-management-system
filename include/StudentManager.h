@@ -16,7 +16,7 @@ public:
     void removeStudentById(int id);
     int getNumOfStudents();
     Student* getStudentById(int id);
-    void displayStudents();
+    void displayStudents(std::vector<Student> students);
     void addStudentWorkflow();
     void saveToFile();
     void readFromFile();
