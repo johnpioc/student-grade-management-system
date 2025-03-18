@@ -32,7 +32,7 @@ void manageStudents(StudentManager studentManager) {
     while (true) {
         studentManager.displayStudents();
 
-        std::cout << "Commands: add student [A], add grade to student [G <ID> <GRADE>], edit [E <ID>], delete [D <ID>], quit [Q]\n";
+        std::cout << "Commands: add student [A], add grade to student [G <ID> <GRADE>], delete [D <ID>], quit [Q]\n";
         std::cout << "Type your command: ";
         std::string inputString;
         std::getline(std::cin, inputString);
@@ -47,10 +47,15 @@ void manageStudents(StudentManager studentManager) {
             if (student) {
                 int newGrade = std::stoi(components[2]);
                 student->addNewGrade(newGrade);
+                studentManager.saveToFile();
                 std::cout << "Grade added successfully to student #" << idToSearch << "\n";
             } else {
                 std::cout << "There is no student with the ID of " << idToSearch << ", try again.\n";
             }
+        } else if (components[0] == "D") {
+            int idToSearch = std::stoi(components[1]);
+            studentManager.removeStudentById(idToSearch);
+            studentManager.saveToFile();
         } else if (components[0] == "Q") {
             break;
         } else {

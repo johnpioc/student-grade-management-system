@@ -19,9 +19,7 @@ public:
     double getGPA();
     std::vector<int> getAllGrades();
 
-    void updateName(std::string newName);
     void addNewGrade(int grade);
-    int removeGradeByIndex(int index);
 
 };
 

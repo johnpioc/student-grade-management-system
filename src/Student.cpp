@@ -27,17 +27,6 @@ std::vector<int> Student::getAllGrades() {
     return grades;
 }
 
-void Student::updateName(std::string newName) {
-    name = newName;
-}
-
 void Student::addNewGrade(int grade) {
     grades.push_back(grade);
 }
-
-int Student::removeGradeByIndex(int index) {
-    int toRemove = grades[index];
-    grades.erase(grades.begin() + index);
-    return toRemove;
-}
-

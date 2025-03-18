@@ -13,7 +13,7 @@ private:
 public:
     void addStudent(Student newStudent);
     std::vector<Student> getAllStudents();
-    Student removeStudentByIndex(int index);
+    void removeStudentById(int id);
     int getNumOfStudents();
     Student* getStudentById(int id);
     void displayStudents();

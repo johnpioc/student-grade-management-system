@@ -13,10 +13,20 @@ std::vector<Student> StudentManager::getAllStudents() {
     return students;
 }
 
-Student StudentManager::removeStudentByIndex(int index) {
-    Student studentToRemove = students[index];
-    students.erase(students.begin() + index);
-    return studentToRemove;
+void StudentManager::removeStudentById(int id) {
+    int index = -1;
+    for (int i = 0; i < students.size(); i++) {
+        if (students[i].getId() == id) {
+            index = i;
+            break;
+        }
+    }
+    if (index != -1) {
+        students.erase(students.begin() + index);
+        std::cout << "Deleted student #" << id << " successfully.\n";
+    } else {
+        std::cout << "Could not find student with id #" << id << "\n";
+    }
 }
 
 int StudentManager::getNumOfStudents() {
